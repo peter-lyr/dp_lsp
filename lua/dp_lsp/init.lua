@@ -6,7 +6,7 @@ Data = vim.fn.stdpath 'data' .. '\\'
 
 DataSub = Data .. 'DataSub'
 
-DataSubTreeSitter = DataSub .. '\\TreeSitter'
+DataSubMason = DataSub .. '\\Mason'
 
 local lspconfig = require 'lspconfig'
 local nls = require 'null-ls'
@@ -15,7 +15,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require 'cmp_nvim_lsp'.default_capabilities(capabilities)
 
 require 'mason'.setup {
-  install_root_dir = B.getcreate_stddata_dirpath 'mason'.filename,
+  install_root_dir = DataSubMason,
   pip = {
     upgrade_pip = true,
     install_args = { '-i', 'https://pypi.tuna.tsinghua.edu.cn/simple', '--trusted-host', 'mirrors.aliyun.com', },

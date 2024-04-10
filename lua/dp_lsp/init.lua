@@ -1,12 +1,25 @@
 local M = {}
 
-local B = require 'dp_base'
+local sta, B = pcall(require, 'dp_base')
 
-Data = vim.fn.stdpath 'data' .. '\\'
+if not sta then return print('Dp_base is required!', debug.getinfo(1)['source']) end
 
-DataSub = Data .. 'DataSub'
-
-DataSubMason = DataSub .. '\\Mason'
+if B.check_plugins {
+      'git@github.com:peter-lyr/dp_init',
+      'folke/which-key.nvim',
+      'neovim/nvim-lspconfig',
+      'nvim-lua/plenary.nvim',
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
+      'jay-babu/mason-null-ls.nvim',
+      'j-hui/fidget.nvim',
+      'folke/neodev.nvim',
+      'smjonas/inc-rename.nvim',
+      'LazyVim/LazyVim',
+    } then
+  return
+end
 
 local lspconfig = require 'lspconfig'
 local nls = require 'null-ls'

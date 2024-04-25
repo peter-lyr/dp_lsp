@@ -6,6 +6,7 @@ if not sta then return print('Dp_base is required!', debug.getinfo(1)['source'])
 
 if B.check_plugins {
       'git@github.com:peter-lyr/dp_init',
+      'git@github.com:peter-lyr/dp_telescope',
       'folke/which-key.nvim',
       'neovim/nvim-lspconfig',
       'nvim-lua/plenary.nvim',
@@ -256,8 +257,6 @@ require 'which-key'.register {
   ['<leader>fD'] = { function() M.feedkeys_LspStop() end, 'nvim.lsp: feedkeys_LspStop', mode = { 'n', 'v', }, },
   ['<leader>fn'] = { function() M.rename() end, 'lsp: rename', mode = { 'n', 'v', }, },
   ['<leader>ff'] = { function() M.format() end, 'lsp: format', mode = { 'n', 'v', }, silent = true, },
-  ['<leader>fl'] = { function() require 'nvim.telescope'.lsp_document_symbols() end, 'telescope.lsp: document_symbols', mode = { 'n', 'v', }, silent = true, },
-  ['<leader>fr'] = { function() require 'nvim.telescope'.lsp_references() end, 'telescope.lsp: references', mode = { 'n', 'v', }, silent = true, },
   ['<leader>f<c-f>'] = { function() M.LspInfo() end, 'nvim.lsp: LspInfo', mode = { 'n', 'v', }, },
   ['<leader>f<c-r>'] = { function() M.LspRestart() end, 'nvim.lsp: LspRestart', mode = { 'n', 'v', }, },
   ['<leader>f<c-s>'] = { function() M.LspStart() end, 'nvim.lsp: LspStart', mode = { 'n', 'v', }, },

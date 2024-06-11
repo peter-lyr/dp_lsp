@@ -239,6 +239,12 @@ function M.format_paragraph()
   pcall(vim.fn.setpos, '.', save_cursor)
 end
 
+function M.equal_whole_buffer()
+  local save_cursor = vim.fn.getpos '.'
+  vim.cmd 'norm gg=G'
+  pcall(vim.fn.setpos, '.', save_cursor)
+end
+
 function M.format_input()
   local dirs = B.get_file_dirs_till_git()
   for _, dir in ipairs(dirs) do
@@ -264,6 +270,7 @@ require 'which-key'.register {
   ['<leader>fc'] = { function() M.code_action() end, 'nvim.lsp: code_action', mode = { 'n', 'v', }, },
   ['<leader>fi'] = { function() M.implementation() end, 'nvim.lsp: implementation', mode = { 'n', 'v', }, },
   ['<leader>fp'] = { function() M.format_paragraph() end, 'nvim.lsp: format_paragraph', mode = { 'n', 'v', }, },
+  ['<leader>fg'] = { function() M.equal_whole_buffer() end, 'nvim.lsp: equal_whole_buffer', mode = { 'n', 'v', }, },
   ['<leader>fs'] = { function() M.signature_help() end, 'nvim.lsp: signature_help', mode = { 'n', 'v', }, },
   ['<leader>fq'] = { function() M.diagnostic_enable() end, 'nvim.lsp: diagnostic_enable', mode = { 'n', 'v', }, },
   ['<leader>fvq'] = { function() M.diagnostic_disable() end, 'nvim.lsp: diagnostic_disable', mode = { 'n', 'v', }, },
